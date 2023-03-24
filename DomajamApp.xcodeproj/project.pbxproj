@@ -11,6 +11,7 @@
 		0D5D00A729CB67F900CD1BE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D00A629CB67F900CD1BE1 /* ContentView.swift */; };
 		0D5D00A929CB67FA00CD1BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5D00A829CB67FA00CD1BE1 /* Assets.xcassets */; };
 		0D5D00AC29CB67FA00CD1BE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5D00AB29CB67FA00CD1BE1 /* Preview Assets.xcassets */; };
+		0DEC09B829CCB7710063DDFF /* NFCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC09B729CCB7710063DDFF /* NFCButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		0D5D00A829CB67FA00CD1BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D5D00AB29CB67FA00CD1BE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DEC09B629CCABDC0063DDFF /* DomajamApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DomajamApp.entitlements; sourceTree = "<group>"; };
+		0DEC09B729CCB7710063DDFF /* NFCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				0DEC09B629CCABDC0063DDFF /* DomajamApp.entitlements */,
 				0D5D00A429CB67F900CD1BE1 /* DomajamAppApp.swift */,
 				0D5D00A629CB67F900CD1BE1 /* ContentView.swift */,
+				0DEC09B729CCB7710063DDFF /* NFCButton.swift */,
 				0D5D00A829CB67FA00CD1BE1 /* Assets.xcassets */,
 				0D5D00AA29CB67FA00CD1BE1 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC09B829CCB7710063DDFF /* NFCButton.swift in Sources */,
 				0D5D00A729CB67F900CD1BE1 /* ContentView.swift in Sources */,
 				0D5D00A529CB67F900CD1BE1 /* DomajamAppApp.swift in Sources */,
 			);
