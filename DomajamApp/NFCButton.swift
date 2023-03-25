@@ -9,7 +9,8 @@ import SwiftUI
 import CoreNFC
 
 struct NFCButton : UIViewRepresentable {
-    @Binding var totalMile : Int
+    @Binding var payload: NFCTagPayload?
+
     func makeUIView(context: UIViewRepresentableContext<NFCButton>) -> UIButton {
         let button = UIButton()
         button.configuration = nil
@@ -26,15 +27,15 @@ struct NFCButton : UIViewRepresentable {
 
     }
     func makeCoordinator() -> NFCButton.Coordinator {
-        return Coordinator(totalMile: $totalMile)
+        return Coordinator(payload: $payload)
     }
 
     class Coordinator : NSObject, NFCNDEFReaderSessionDelegate {
         var session : NFCReaderSession?
-        @Binding var totalMile: Int
+        @Binding var payload: NFCTagPayload?
 
-        init(totalMile: Binding<Int>) {
-            _totalMile = totalMile
+        init(payload: Binding<NFCTagPayload?>) {
+            _payload = payload
         }
 
         @objc func beginScan(_ sender: Any) {
@@ -72,7 +73,7 @@ struct NFCButton : UIViewRepresentable {
             else {
                 return
             }
-            self.totalMile += p.mile
+            self.payload = p
         }
     }
 }

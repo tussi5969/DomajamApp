@@ -9,7 +9,7 @@ import SwiftUI
 import CoreNFC
 
 struct ContentView: View {
-    @State var data = ""
+    @State var payload: NFCTagPayload? = nil
     @State var showWrite = false
     @State var totalMile = 0
     let holder = "読み込んだ情報を表示"
@@ -82,7 +82,7 @@ struct ContentView: View {
                     ))
 
                     VStack {
-                        NFCButton(totalMile: self.$totalMile)
+                        NFCButton(payload: self.$payload)
                             .frame(height: UIScreen.main.bounds.height * 0.05)
                             .clipShape(RoundedRectangle(cornerRadius: 0))
                     }.frame(width: UIScreen.main.bounds.width * 0.9, alignment: .center)
