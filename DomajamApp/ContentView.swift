@@ -11,6 +11,7 @@ import CoreNFC
 struct ContentView: View {
     @State var data = ""
     @State var showWrite = false
+    @State var totalMile = 0
     let holder = "読み込んだ情報を表示"
 
     var body: some View {
@@ -38,7 +39,8 @@ struct ContentView: View {
                             Spacer()
                         }
                         HStack {
-                            Text("〇〇")
+                            TextField("0", text: $totalMile.IntToStrDef(0))
+                                .multilineTextAlignment(TextAlignment.center)
                                 .font(.system(size: 40))
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
@@ -59,9 +61,9 @@ struct ContentView: View {
                     .frame(width: UIScreen.main.bounds.width * 0.9)
                     
                     HStack {
-                        CustomButton(title: "ワインを買う", imageName: "wine")
+                        CustomButton(title: "ワインを買う", imageName: "wine", mile: 10, totalMile: $totalMile)
                         Spacer()
-                        CustomButton(title: "中棚荘宿泊", imageName: "onsen")
+                        CustomButton(title: "中棚荘宿泊", imageName: "onsen", mile: 50, totalMile: $totalMile)
                     }.padding(EdgeInsets(
                         top: 20,
                         leading: 30,
@@ -70,7 +72,7 @@ struct ContentView: View {
                     ))
                     HStack {
                         Spacer()
-                        CustomButton(title: "マイルを使う", imageName: "miles")
+                        CustomButton(title: "マイルを使う", imageName: "miles", mile:0, totalMile: $totalMile)
                         Spacer()
                     }.padding(EdgeInsets(
                         top: 10,
@@ -94,8 +96,12 @@ struct ContentView: View {
 struct CustomButton: View {
     var title: String = ""
     var imageName: String = ""
+    var mile: Int = 0
+    @Binding var totalMile: Int
     var body: some View {
-        Button(action: {}) {
+        Button(action: {
+            totalMile += mile
+        }) {
             VStack {
                 Image(self.imageName)
                     .resizable()
@@ -115,5 +121,15 @@ struct CustomButton: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension Binding where Value == Int {
+    func IntToStrDef(_ def: Int) -> Binding<String> {
+        return Binding<String>(get: {
+            return String(self.wrappedValue)
+        }) { value in
+            self.wrappedValue = Int(value) ?? def
+        }
     }
 }
