@@ -12,8 +12,13 @@ struct NFCButton : UIViewRepresentable {
     @Binding var data : String
     func makeUIView(context: UIViewRepresentableContext<NFCButton>) -> UIButton {
         let button = UIButton()
-        button.setTitle("Read", for: .normal)
-        button.backgroundColor = UIColor.gray
+        button.configuration = nil
+        button.imageView?.contentMode = .scaleAspectFit
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 8
+        button.setTitle("タグを読み取る", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.addTarget(context.coordinator, action: #selector(context.coordinator.beginScan(_:)), for: .touchUpInside)
         return button
     }
