@@ -9,8 +9,8 @@ import SwiftUI
 import CoreNFC
 
 struct ContentView: View {
-    @State var data = ""
-    @State var showWrite = false
+    @State var payload: NFCTagPayload? = nil
+    @State var isPresentedAlert: Bool = false
     @State var totalMile = 0
     let holder = "読み込んだ情報を表示"
 
@@ -82,12 +82,30 @@ struct ContentView: View {
                     ))
 
                     VStack {
-                        NFCButton(totalMile: self.$totalMile)
+                        NFCButton(payload: self.$payload)
                             .frame(height: UIScreen.main.bounds.height * 0.05)
                             .clipShape(RoundedRectangle(cornerRadius: 0))
                     }.frame(width: UIScreen.main.bounds.width * 0.9, alignment: .center)
                     Spacer()
-                }.padding(.top, 30)
+                }
+                .padding(.top, 30)
+                .onChange(of: payload) { p in
+                    isPresentedAlert = p != nil
+                }
+                .alert(
+                    "マイルを獲得",
+                    isPresented: $isPresentedAlert,
+                    presenting: payload
+                ) { p in
+                    Button {
+                        totalMile += p.mile
+                        payload = nil
+                    } label: {
+                        Text("OK")
+                    }
+                } message: { p in
+                    Text("\(p.text) を訪れました\n\(p.mile)マイル")
+                }
             }
         }
     }

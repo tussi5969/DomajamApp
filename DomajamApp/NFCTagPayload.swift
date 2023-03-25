@@ -8,18 +8,30 @@
 import Foundation
 
 enum NFCTagPayload: String {
-    case foo = "foofoofoofoofoo"
-    case bar = "barbarbarbarbar"
-    case baz = "bazbazbazbazbaz"
+    case onsen = "foofoofoofoofoo"
+    case harikoshi = "barbarbarbarbar"
+    case gioHillsWinery = "bazbazbazbazbaz"
 
     var mile: Int {
         switch self {
-        case .foo:
+        case .onsen:
             return 30
-        case .bar:
+        case .harikoshi:
             return 50
-        case .baz:
+        case .gioHillsWinery:
             return 100
         }
     }
+
+    var text: String {
+        switch self {
+        case .onsen:
+            return "初恋りんご風呂"
+        case .harikoshi:
+            return "はりこし亭"
+        case .gioHillsWinery:
+            return "ジオヒルズワイナリー"
+        }
+    }
+
 }
