@@ -82,7 +82,7 @@ struct ContentView: View {
                     ))
 
                     VStack {
-                        NFCButton(data: self.$data)
+                        NFCButton(totalMile: self.$totalMile)
                             .frame(height: UIScreen.main.bounds.height * 0.05)
                             .clipShape(RoundedRectangle(cornerRadius: 0))
                     }.frame(width: UIScreen.main.bounds.width * 0.9, alignment: .center)
