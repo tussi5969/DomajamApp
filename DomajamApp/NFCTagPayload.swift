@@ -12,7 +12,7 @@ enum NFCTagPayload: String {
     case bar = "barbarbarbarbar"
     case baz = "bazbazbazbazbaz"
 
-    var point: Int {
+    var mile: Int {
         switch self {
         case .foo:
             return 30

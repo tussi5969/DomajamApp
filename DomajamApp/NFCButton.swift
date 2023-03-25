@@ -67,7 +67,8 @@ struct NFCButton : UIViewRepresentable {
                 let nfcMess = messages.first,
                 let record = nfcMess.records.first,
                 record.typeNameFormat == .absoluteURI || record.typeNameFormat == .nfcWellKnown,
-                let payload = String(data: record.payload, encoding: .utf8)
+                let payload = String(data: record.payload, encoding: .utf8),
+                let p = NFCTagPayload(rawValue: payload)
             else {
                 return
             }
